@@ -24,16 +24,76 @@ const data = [
     title: 'Cobro sueldo enero',
     type: 0,
   },
+  {
+    amount: '31900',
+    date: { seconds: 1612577456 },
+    id: '69fIrJbN1h1qgmaAWKiC',
+    title: 'Cobro sueldo enero',
+    type: 0,
+  },
+  {
+    amount: '31900',
+    date: { seconds: 1612577456 },
+    id: '69fIrJbN1h1qgmaAWKiC3',
+    title: 'Cobro sueldo enero',
+    type: 0,
+  },
+  {
+    amount: '31900',
+    date: { seconds: 1612577456 },
+    id: '69fIrJbN1h1qgmaAWKiC4',
+    title: 'Cobro sueldo enero',
+    type: 0,
+  },
+  {
+    amount: '31900',
+    date: { seconds: 1612577456 },
+    id: '69fIrJbN1h1qgmaAWKiC',
+    title: 'Cobro sueldo enero',
+    type: 0,
+  },
+  {
+    amount: '31900',
+    date: { seconds: 1612577456 },
+    id: '69fIrJbN1h1qgmaAWKiC3',
+    title: 'Cobro sueldo enero',
+    type: 0,
+  },
+  {
+    amount: '31900',
+    date: { seconds: 1612577456 },
+    id: '69fIrJbN1h1qgmaAWKiC4',
+    title: 'Cobro sueldo enero',
+    type: 0,
+  },
+  {
+    amount: '31900',
+    date: { seconds: 1612577456 },
+    id: '69fIrJbN1h1qgmaAWKiC',
+    title: 'Cobro sueldo enero',
+    type: 0,
+  },
+  {
+    amount: '31900',
+    date: { seconds: 1612577456 },
+    id: '69fIrJbN1h1qgmaAWKiC3',
+    title: 'Cobro sueldo enero',
+    type: 0,
+  },
+  {
+    amount: '31900',
+    date: { seconds: 1612577456 },
+    id: '69fIrJbN1h1qgmaAWKiC4',
+    title: 'Cobro sueldo enero',
+    type: 0,
+  },
 ];
 
 export default class Incomes extends Component {
-  prueba = () => {
-    console.log('Pressed');
-  };
   render() {
     return (
-      <View>
-        <List data={data} onPress={this.prueba} />
+      <View style={{ padding: 10 }}>
+        <List data={data} />
       </View>
     );
   }

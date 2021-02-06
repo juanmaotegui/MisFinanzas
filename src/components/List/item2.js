@@ -1,12 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
-export default function Item7(props) {
-  const { id, title, date, amount } = props.item;
+export default function Item2({ id, title, date, amount }) {
   return (
-    <TouchableOpacity
-      style={styles.itemContainer}
-      onPress={() => props.onPress()}>
+    <View style={styles.itemContainer}>
       <View style={{ flex: 3 }}>
         <Text style={styles.itemTitle}>{title}</Text>
         <View style={{ flex: 1, flexDirection: 'row' }}>
@@ -15,33 +12,32 @@ export default function Item7(props) {
         </View>
       </View>
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text style={styles.itemAmount}>U$ -{amount}</Text>
+        <Text style={styles.itemAmount}>U$ {amount}</Text>
       </View>
-    </TouchableOpacity>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   itemContainer: {
     borderRadius: 3,
+    backgroundColor: '#dbdbdb',
+    marginVertical: 8,
     padding: 10,
     minHeight: 70,
     flexDirection: 'row',
-    borderBottomColor: '#dedede',
-    borderBottomWidth: 1,
+    borderTopColor: '#36a34e',
+    borderTopWidth: 3,
   },
   itemTitle: {
     fontWeight: 'bold',
     fontSize: 16,
-    marginBottom: 20,
+    marginBottom: 15,
     flex: 1,
   },
   itemAmount: {
     fontSize: 18,
     fontWeight: 'bold',
-    // color: '#39754b',
-    // color: '#e3bb1e',
-    color: '#e03d3d',
   },
   itemText: {
     flex: 1,
