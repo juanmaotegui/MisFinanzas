@@ -1,4 +1,4 @@
-package com.misfinanzas;
+package com.juanmaotegui.misfinanzas;
 
 import com.facebook.react.ReactActivity;
 
