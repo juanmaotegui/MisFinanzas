@@ -24,7 +24,7 @@ function Incomes() {
           type: Type,
         });
       });
-      console.log(list);
+
       setIncomes(list);
 
       if (loading) {
@@ -40,7 +40,8 @@ function Incomes() {
       Date: firestore.FieldValue.serverTimestamp(),
       Type: 0,
     });
-    setTodo('');
+    setTitle(null);
+    setAmount(null);
   }
 
   if (loading) {
@@ -62,7 +63,6 @@ function Incomes() {
       <Button title="Agregar" onPress={() => addIncome()} />
 
       <FlatList
-        style={{ flex: 1 }}
         data={incomes}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => <Record {...item} />}
