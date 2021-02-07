@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { GREEN, YELLOW, RED } from '../colors';
 
 export default function Item(props) {
   /**
@@ -33,11 +34,11 @@ export default function Item(props) {
   const amountColor = () => {
     switch (type) {
       case 0:
-        return '#39754b';
+        return GREEN;
       case 1:
-        return '#e03d3d';
+        return RED;
       case 2:
-        return '#e3bb1e';
+        return YELLOW;
       default:
         return '#000';
     }
