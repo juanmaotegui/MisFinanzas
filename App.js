@@ -11,6 +11,7 @@ import { SafeAreaView, StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import Incomes from './src/screens/Incomes';
 import Expenses from './src/screens/Expenses';
+import AddRecordModal from './src/components/AddRecordModal';
 
 const App: () => React$Node = () => {
   return (
@@ -18,7 +19,8 @@ const App: () => React$Node = () => {
       <NavigationContainer>
         <StatusBar backgroundColor="#949494" />
         <SafeAreaView style={{ flex: 1 }}>
-          <Incomes />
+          {/* <Incomes /> */}
+          <AddRecordModal />
         </SafeAreaView>
       </NavigationContainer>
     </>
