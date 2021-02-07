@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import List from '../components/List';
 import { RED } from '../colors';
 import Header from '../components/Header';
-// import FloatButton from '../components/FloatButton';
+import FloatButton from '../components/FloatButton';
 
 const actions = [
   {
@@ -27,7 +27,7 @@ export default function Expenses() {
     <View style={{ flex: 1 }}>
       <Header backgroundColor={RED} title="GASTOS" />
       <List data={expenses} />
-      {/* <FloatButton actions={actions} singleAction={true} /> */}
+      <FloatButton actions={actions} singleAction={true} />
     </View>
   );
 }

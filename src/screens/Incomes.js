@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import List from '../components/List';
 import { GREEN } from '../colors';
 import Header from '../components/Header';
-// import FloatButton from '../components/FloatButton';
+import FloatButton from '../components/FloatButton';
 import { getRecords } from '../firebase';
 // import AddRecordModal from '../components/AddRecordModal';
 
@@ -30,7 +30,7 @@ export default function Incomes() {
       <Header backgroundColor={GREEN} title="INGRESOS" />
       <List data={incomes} />
       {/* <AddRecordModal /> */}
-      {/* <FloatButton actions={actions} singleAction={true} /> */}
+      <FloatButton actions={actions} singleAction={true} />
     </View>
   );
 }
