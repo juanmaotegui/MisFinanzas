@@ -19,8 +19,7 @@ const App: () => React$Node = () => {
       <NavigationContainer>
         <StatusBar backgroundColor="#949494" />
         <SafeAreaView style={{ flex: 1 }}>
-          {/* <Incomes /> */}
-          <AddRecordModal />
+          <Incomes />
         </SafeAreaView>
       </NavigationContainer>
     </>

@@ -1,22 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { View } from 'react-native';
 import List from '../components/List';
 import { GREEN } from '../colors';
 import Header from '../components/Header';
 import FloatButton from '../components/FloatButton';
 import { getRecords } from '../firebase';
-// import AddRecordModal from '../components/AddRecordModal';
-
-const actions = [
-  {
-    text: 'Inreso',
-    name: 'btn_incom',
-    position: 1,
-    onPress: () => console.log('CLickes'),
-  },
-];
+import AddRecordModal from '../components/AddRecordModal';
 
 export default function Incomes() {
+  const childRef = useRef();
   const [incomes, setIncomes] = useState([]);
 
   useEffect(() => {
@@ -25,12 +17,21 @@ export default function Incomes() {
     });
   }, []);
 
+  const actions = [
+    {
+      text: 'Inreso',
+      name: 'btn_incom',
+      position: 1,
+      onPress: () => childRef.current.open(),
+    },
+  ];
+
   return (
     <View style={{ flex: 1 }}>
       <Header backgroundColor={GREEN} title="INGRESOS" />
       <List data={incomes} />
-      {/* <AddRecordModal /> */}
-      <FloatButton actions={actions} singleAction={true} />
+      <AddRecordModal ref={childRef} />
+      <FloatButton actions={actions} singleAction={true} visible={true} />
     </View>
   );
 }

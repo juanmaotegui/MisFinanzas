@@ -10,6 +10,7 @@ export default function FloatButton(props) {
 
   return (
     <FloatingAction
+      visible={props.visible}
       actions={props.actions}
       overrideWithAction={props.singleAction}
       onPressItem={(name) => {
