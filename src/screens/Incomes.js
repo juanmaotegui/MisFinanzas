@@ -30,7 +30,6 @@ export default function Incomes() {
       position: 1,
       onPress: () => {
         childRef.current.open();
-        setFabVisible(false);
       },
     },
   ];
@@ -45,6 +44,9 @@ export default function Incomes() {
         onClose={() => {
           setFabVisible(true);
           updateRecordsList();
+        }}
+        onOpen={() => {
+          setFabVisible(false);
         }}
       />
       <FloatButton actions={actions} singleAction={true} visible={fabVisible} />

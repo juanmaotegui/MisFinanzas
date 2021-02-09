@@ -10,7 +10,7 @@ import {
   StyleSheet,
   Button,
   TextInput,
-  TouchableOpacity,
+  TouchableWithoutFeedback,
 } from 'react-native';
 import { addRecord } from '../firebase';
 import BottomSheet from 'reanimated-bottom-sheet';
@@ -95,10 +95,12 @@ const AddRecordModal = forwardRef((props, ref) => {
     <BottomSheet
       ref={sheetRef}
       snapPoints={[0, 320]}
-      borderRadius={10}
       renderContent={renderContent}
       renderHeader={renderHeader}
       onCloseStart={props.onClose}
+      onCloseEnd={props.onClose}
+      onOpenEnd={props.onOpen}
+      onOpenStart={props.onOpen}
       enabledContentTapInteraction={false}
     />
   );
@@ -106,7 +108,7 @@ const AddRecordModal = forwardRef((props, ref) => {
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: '#f7f5eee8',
+    backgroundColor: 'white',
     shadowColor: '#000000',
     paddingTop: 20,
     borderTopLeftRadius: 20,
