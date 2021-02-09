@@ -6,6 +6,7 @@ import Header from '../components/Header';
 import FloatButton from '../components/FloatButton';
 import { getRecords } from '../firebase';
 import AddRecordModal from '../components/AddRecordModal';
+import BottomNavBar from '../components/BottomNavBar';
 
 export default function Incomes() {
   const childRef = useRef();

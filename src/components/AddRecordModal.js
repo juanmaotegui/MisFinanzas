@@ -100,7 +100,6 @@ const AddRecordModal = forwardRef((props, ref) => {
       renderHeader={renderHeader}
       onCloseStart={props.onClose}
       enabledContentTapInteraction={false}
-      callbackThreshold={1}
     />
   );
 });
