@@ -4,7 +4,7 @@ import Item from './Item';
 
 export default function List(props) {
   return (
-    <View style={{ padding: 10 }}>
+    <View style={{ padding: 10, marginBottom: 50 }}>
       <FlatList
         data={props.data}
         keyExtractor={(item) => item.id}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { GREEN, YELLOW, RED } from '../colors';
+import moment from 'moment';
 
 export default function Item(props) {
   /**
@@ -52,7 +53,9 @@ export default function Item(props) {
       <View style={{ flex: 3 }}>
         <Text style={styles.itemTitle}>{title}</Text>
         <View style={{ flex: 1, flexDirection: 'row' }}>
-          <Text style={styles.itemText}>04/02/2021</Text>
+          <Text style={styles.itemText}>
+            {date ? moment.unix(date.seconds).format('DD/MM/YYYY') : ' - '}
+          </Text>
           {creditor ? <Text style={styles.itemText}>{creditor}</Text> : null}
         </View>
       </View>

@@ -28,7 +28,11 @@ export const getRecords = (filter) => {
 };
 
 export const addRecord = async (record) => {
-  await ref.add({ ...record, date: firestore.FieldValue.serverTimestamp() });
+  await ref.add({
+    ...record,
+    date: firestore.FieldValue.serverTimestamp(),
+    currency: 'UYU',
+  });
 };
 
 const compare = (a, b) => {
