@@ -13,10 +13,14 @@ export default function Incomes() {
   const [fabVisible, setFabVisible] = useState(true);
 
   useEffect(() => {
+    updateRecordsList();
+  }, []);
+
+  const updateRecordsList = () => {
     getRecords(0).then((list) => {
       setIncomes(list);
     });
-  }, []);
+  };
 
   const actions = [
     {
@@ -34,7 +38,14 @@ export default function Incomes() {
     <View style={{ flex: 1 }}>
       <Header backgroundColor={GREEN} title="INGRESOS" />
       <List data={incomes} />
-      <AddRecordModal ref={childRef} onClose={() => setFabVisible(true)} />
+      <AddRecordModal
+        ref={childRef}
+        type={0}
+        onClose={() => {
+          setFabVisible(true);
+          updateRecordsList();
+        }}
+      />
       <FloatButton actions={actions} singleAction={true} visible={fabVisible} />
     </View>
   );

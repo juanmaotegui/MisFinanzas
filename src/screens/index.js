@@ -3,7 +3,7 @@ import firestore from '@react-native-firebase/firestore';
 import { FlatList, Button, TextInput } from 'react-native';
 import Record from './Record';
 
-function Incomes() {
+function Prueba() {
   const [title, setTitle] = useState(null);
   const [amount, setAmount] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -15,13 +15,13 @@ function Incomes() {
     return ref.onSnapshot((querySnapshot) => {
       const list = [];
       querySnapshot.forEach((doc) => {
-        const { Title, Date, Amount, Type } = doc.data();
+        const { title, date, amount, type } = doc.data();
         list.push({
           id: doc.id,
-          title: Title,
-          date: Date,
-          amount: Amount,
-          type: Type,
+          title,
+          date,
+          amount,
+          type,
         });
       });
 
@@ -35,10 +35,10 @@ function Incomes() {
 
   async function addIncome() {
     await ref.add({
-      Title: title,
-      Amount: amount,
-      Date: firestore.FieldValue.serverTimestamp(),
-      Type: 0,
+      title: title,
+      amount: amount,
+      date: firestore.FieldValue.serverTimestamp(),
+      type: 0,
     });
     setTitle(null);
     setAmount(null);
@@ -71,4 +71,4 @@ function Incomes() {
   );
 }
 
-export default Incomes;
+export default Prueba;

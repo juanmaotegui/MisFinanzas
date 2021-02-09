@@ -21,6 +21,7 @@ export const getRecords = (filter) => {
           });
         }
       });
+      list.sort(compare);
       resolve(list);
     });
   });
@@ -28,4 +29,10 @@ export const getRecords = (filter) => {
 
 export const addRecord = async (record) => {
   await ref.add({ ...record, date: firestore.FieldValue.serverTimestamp() });
+};
+
+const compare = (a, b) => {
+  if (!a || !a.date) return b;
+  if (!b || !b.date) return a;
+  return b.date.seconds - a.date.seconds;
 };

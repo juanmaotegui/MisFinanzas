@@ -12,6 +12,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Incomes from './src/screens/Incomes';
 import Expenses from './src/screens/Expenses';
 import AddRecordModal from './src/components/AddRecordModal';
+import Prueba from './src/screens';
 
 const App: () => React$Node = () => {
   return (
