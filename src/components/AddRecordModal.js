@@ -20,7 +20,7 @@ const AddRecordModal = forwardRef((props, ref) => {
         backgroundColor: 'white',
         padding: 20,
         height: 300,
-        zIndex: 9999,
+        zIndex: 999999999,
       }}>
       <View style={styles.titleContainer}>
         <Text style={styles.title}>Agregar registro</Text>
@@ -54,11 +54,6 @@ const AddRecordModal = forwardRef((props, ref) => {
     </View>
   );
 
-  /* <Button
-          title="Open Bottom Sheet"
-          onPress={() => sheetRef.current.snapTo(1)}
-        /> */
-
   return (
     <BottomSheet
       ref={sheetRef}
@@ -66,6 +61,7 @@ const AddRecordModal = forwardRef((props, ref) => {
       borderRadius={10}
       renderContent={renderContent}
       renderHeader={renderHeader}
+      onCloseStart={props.onClose}
     />
   );
 });

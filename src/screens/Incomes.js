@@ -10,6 +10,7 @@ import AddRecordModal from '../components/AddRecordModal';
 export default function Incomes() {
   const childRef = useRef();
   const [incomes, setIncomes] = useState([]);
+  const [fabVisible, setFabVisible] = useState(true);
 
   useEffect(() => {
     getRecords(0).then((list) => {
@@ -20,9 +21,12 @@ export default function Incomes() {
   const actions = [
     {
       text: 'Inreso',
-      name: 'btn_incom',
+      name: 'btn_incomes',
       position: 1,
-      onPress: () => childRef.current.open(),
+      onPress: () => {
+        childRef.current.open();
+        setFabVisible(false);
+      },
     },
   ];
 
@@ -30,8 +34,8 @@ export default function Incomes() {
     <View style={{ flex: 1 }}>
       <Header backgroundColor={GREEN} title="INGRESOS" />
       <List data={incomes} />
-      <AddRecordModal ref={childRef} />
-      <FloatButton actions={actions} singleAction={true} visible={true} />
+      <AddRecordModal ref={childRef} onClose={() => setFabVisible(true)} />
+      <FloatButton actions={actions} singleAction={true} visible={fabVisible} />
     </View>
   );
 }
