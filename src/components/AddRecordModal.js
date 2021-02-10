@@ -97,7 +97,6 @@ const AddRecordModal = forwardRef((props, ref) => {
       snapPoints={[0, 320]}
       renderContent={renderContent}
       renderHeader={renderHeader}
-      onCloseStart={props.onClose}
       onCloseEnd={props.onClose}
       onOpenEnd={props.onOpen}
       onOpenStart={props.onOpen}

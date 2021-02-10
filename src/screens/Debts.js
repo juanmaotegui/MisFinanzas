@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View } from 'react-native';
 import List from '../components/List';
-import { GREEN } from '../colors';
+import { YELLOW } from '../colors';
 import Header from '../components/Header';
 import FloatButton from '../components/FloatButton';
 import { getRecords } from '../firebase';
 import AddRecordModal from '../components/AddRecordModal';
 
-function Incomes() {
+function Debts() {
   const childRef = useRef();
-  const [incomes, setIncomes] = useState([]);
+  const [debts, setDebts] = useState([]);
   const [fabVisible, setFabVisible] = useState(true);
 
   useEffect(() => {
@@ -17,15 +17,15 @@ function Incomes() {
   }, []);
 
   const updateRecordsList = () => {
-    getRecords(0).then((list) => {
-      setIncomes(list);
+    getRecords(2).then((list) => {
+      setDebts(list);
     });
   };
 
   const actions = [
     {
-      text: 'Inreso',
-      name: 'btn_incomes',
+      text: 'Deudas',
+      name: 'btn_debts',
       position: 1,
       onPress: () => childRef.current.open(),
     },
@@ -33,11 +33,11 @@ function Incomes() {
 
   return (
     <View style={{ flex: 1 }}>
-      <Header backgroundColor={GREEN} title="INGRESOS" />
-      <List data={incomes} />
+      <Header backgroundColor={YELLOW} title="DEUDAS" />
+      <List data={debts} />
       <AddRecordModal
         ref={childRef}
-        type={0}
+        type={1}
         onClose={() => {
           setFabVisible(true);
           updateRecordsList();
@@ -51,4 +51,4 @@ function Incomes() {
   );
 }
 
-export { Incomes };
+export { Debts };

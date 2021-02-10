@@ -7,7 +7,7 @@ import FloatButton from '../components/FloatButton';
 import { getRecords } from '../firebase';
 import AddRecordModal from '../components/AddRecordModal';
 
-export default function Expenses() {
+function Expenses() {
   const childRef = useRef();
   const [expenses, setExpenses] = useState([]);
   const [fabVisible, setFabVisible] = useState(true);
@@ -50,3 +50,5 @@ export default function Expenses() {
     </View>
   );
 }
+
+export { Expenses };
