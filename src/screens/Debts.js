@@ -1,11 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View } from 'react-native';
-import List from '../components/List';
 import { YELLOW } from '../colors';
-import Header from '../components/Header';
-import FloatButton from '../components/FloatButton';
 import { getRecords } from '../firebase';
-import AddRecordModal from '../components/AddRecordModal';
+import { Header, List, AddRecordModal, FloatButton } from '../components';
 
 function Debts() {
   const childRef = useRef();

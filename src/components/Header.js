@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-export default function Header(props) {
+function Header(props) {
   return (
     <View
       style={[styles.container, { backgroundColor: props.backgroundColor }]}>
@@ -21,3 +21,5 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
 });
+
+export { Header };

@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { GREEN, YELLOW, RED } from '../colors';
 import moment from 'moment';
 
-export default function Item(props) {
+function Item(props) {
   /**
    * type = 0 - ingresos, 1 - gastos, 2 - deuda
    * creditor = acreedor, a quien se le debe
@@ -93,3 +93,5 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
 });
+
+export { Item };

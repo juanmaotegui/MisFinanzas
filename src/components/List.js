@@ -1,8 +1,8 @@
 import React from 'react';
 import { FlatList, View } from 'react-native';
-import Item from './Item';
+import { Item } from './index';
 
-export default function List(props) {
+function List(props) {
   return (
     <View style={{ padding: 10, marginBottom: 50 }}>
       <FlatList
@@ -13,3 +13,5 @@ export default function List(props) {
     </View>
   );
 }
+
+export { List };

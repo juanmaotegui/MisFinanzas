@@ -1,34 +1,45 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import FloatButton from './FloatButton';
+import { View, Text, TouchableOpacity } from 'react-native';
 
-export default function BottomNavBar(props) {
+function BottomNavBar({ state, descriptors, navigation }) {
   return (
-    <>
-      <View
-        style={{
-          position: 'absolute',
-          bottom: 0,
-          height: 65,
-          left: 0,
-          width: '79%',
-          backgroundColor: '#53d2db',
-          borderTopRightRadius: 5,
-          borderBottomRightRadius: 5,
-        }}></View>
-      <View
-        style={{
-          position: 'absolute',
-          bottom: 0,
-          right: 0,
-          height: 65,
-          width: '19%',
-          borderTopLeftRadius: 5,
-          borderBottomLeftRadius: 5,
-          backgroundColor: '#215bbf',
-        }}>
-        {/* <FloatButton /> */}
-      </View>
-    </>
+    <View
+      style={{
+        backgroundColor: 'rgba(255,0,0,1)',
+        height: 60,
+        flexDirection: 'row',
+      }}>
+      {state.routes.map((route, index) => {
+        const label = route.name;
+        const isFocused = state.index === index;
+
+        const onPress = () => {
+          const event = navigation.emit({
+            type: 'tabPress',
+            target: route.key,
+            canPreventDefault: true,
+          });
+
+          if (!isFocused && !event.defaultPrevented) {
+            navigation.navigate(route.name);
+          }
+        };
+
+        return (
+          <TouchableOpacity
+            key={label}
+            accessibilityRole="button"
+            accessibilityState={isFocused ? { selected: true } : {}}
+            onPress={onPress}
+            style={{ flex: 1 }}>
+            <Text style={{ color: isFocused ? '#673ab7' : '#222' }}>
+              {label}
+            </Text>
+          </TouchableOpacity>
+        );
+      })}
+    </View>
   );
 }
+
+export { BottomNavBar };
