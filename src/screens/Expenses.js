@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import { RED } from '../colors';
 import { getRecords } from '../firebase';
 import { Header, List, AddRecordModal, FloatButton } from '../components';
+import MatComIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 function Expenses() {
   const childRef = useRef();
@@ -23,6 +24,7 @@ function Expenses() {
     {
       text: 'Gasto',
       name: 'btn_expense',
+      icon: <MatComIcon name="plus" size={30} color="#FFF" />,
       position: 1,
       onPress: () => childRef.current.open(),
     },

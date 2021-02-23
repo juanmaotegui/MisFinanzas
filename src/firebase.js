@@ -27,13 +27,24 @@ export const getRecords = (filter) => {
   });
 };
 
-export const addRecord = async (record) => {
-  await ref.add({
-    ...record,
-    date: firestore.FieldValue.serverTimestamp(),
-    currency: 'UYU',
+export const addRecord = (record) => {
+  return new Promise(async (resolve, reject) => {
+    await ref.add({
+      ...record,
+      date: firestore.FieldValue.serverTimestamp(),
+      currency: 'UYU',
+    });
+    resolve(true);
   });
 };
+
+// export const addRecord = async (record) => {
+//   await ref.add({
+//     ...record,
+//     date: firestore.FieldValue.serverTimestamp(),
+//     currency: 'UYU',
+//   });
+// };
 
 const compare = (a, b) => {
   if (!a || !a.date) return b;

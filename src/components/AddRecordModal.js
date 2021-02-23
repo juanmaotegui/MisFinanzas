@@ -36,13 +36,14 @@ const AddRecordModal = forwardRef((props, ref) => {
       type: props.type,
       currency,
     };
-    addRecord(record);
+    addRecord(record).then((resp) => {
+      props.onClose();
+    });
 
     setTitle(null);
     setAmount(null);
 
     sheetRef.current.snapTo(0);
-    props.onClose();
   };
 
   const renderContent = () => (
@@ -71,6 +72,7 @@ const AddRecordModal = forwardRef((props, ref) => {
           style={styles.input}
           value={amount}
           onChangeText={(text) => setAmount(text)}
+          onSubmitEditing={() => newRecord()}
         />
       </View>
       <View style={styles.buttonContainer}>
