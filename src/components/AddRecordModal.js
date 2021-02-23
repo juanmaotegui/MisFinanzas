@@ -29,21 +29,26 @@ const AddRecordModal = forwardRef((props, ref) => {
   }));
 
   const newRecord = () => {
-    const record = {
-      title,
-      amount,
-      creditor,
-      type: props.type,
-      currency,
-    };
-    addRecord(record).then((resp) => {
+    if (!title || !amount) {
       props.onClose();
-    });
+      sheetRef.current.snapTo(0);
+    } else {
+      const record = {
+        title,
+        amount,
+        creditor,
+        type: props.type,
+        currency,
+      };
+      addRecord(record).then((resp) => {
+        props.onClose();
+      });
 
-    setTitle(null);
-    setAmount(null);
+      setTitle(null);
+      setAmount(null);
 
-    sheetRef.current.snapTo(0);
+      sheetRef.current.snapTo(0);
+    }
   };
 
   const renderContent = () => (
@@ -51,7 +56,7 @@ const AddRecordModal = forwardRef((props, ref) => {
       style={{
         backgroundColor: 'white',
         padding: 20,
-        height: 300,
+        height: 230,
       }}>
       <View style={styles.titleContainer}>
         <Text style={styles.title}>Agregar registro</Text>
@@ -75,13 +80,6 @@ const AddRecordModal = forwardRef((props, ref) => {
           onSubmitEditing={() => newRecord()}
         />
       </View>
-      <View style={styles.buttonContainer}>
-        <Button
-          title="CONFIRMAR"
-          style={styles.button}
-          onPress={() => newRecord()}
-        />
-      </View>
     </View>
   );
 
@@ -96,7 +94,7 @@ const AddRecordModal = forwardRef((props, ref) => {
   return (
     <BottomSheet
       ref={sheetRef}
-      snapPoints={[0, 320]}
+      snapPoints={[0, 250]}
       renderContent={renderContent}
       renderHeader={renderHeader}
       onCloseEnd={props.onClose}
