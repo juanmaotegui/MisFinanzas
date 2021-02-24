@@ -25,7 +25,7 @@ export default function TabNavigator() {
         component={Expenses}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <MatComIcon name="cash-remove" color={color} size={size} />
+            <MatComIcon name="cash-minus" color={color} size={size} />
           ),
         }}
       />
