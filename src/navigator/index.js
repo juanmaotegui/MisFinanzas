@@ -1,6 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Incomes, Expenses, Debts } from '../screens';
+import { Incomes, Expenses, Debts, Dashboard } from '../screens';
 // import { BottomNavBar } from '../components';
 import MatComIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -11,6 +11,15 @@ const Tab = createBottomTabNavigator();
 export default function TabNavigator() {
   return (
     <Tab.Navigator>
+      <Tab.Screen
+        name="DASHBOARD"
+        component={Dashboard}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <MatComIcon name="view-dashboard" color={color} size={size} />
+          ),
+        }}
+      />
       <Tab.Screen
         name="INGRESOS"
         component={Incomes}
