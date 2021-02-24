@@ -3,6 +3,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,reactnative,vscode
 
 google-services.json
+keystore.properties
 
 ### macOS ###
 # General
@@ -95,7 +96,7 @@ captures/
 # Keystore files
 # Uncomment the following lines if you do not want to check your keystore files in.
 #*.jks
-#*.keystore
+*.keystore
 
 # External native build folder generated in Android Studio 2.2 and later
 .externalNativeBuild
