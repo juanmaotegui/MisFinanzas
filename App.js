@@ -15,7 +15,7 @@ const App: () => React$Node = () => {
   return (
     <>
       <NavigationContainer>
-        <StatusBar backgroundColor="#949494" />
+        <StatusBar hidden backgroundColor="#949494" />
         <SafeAreaView style={{ flex: 1 }}>
           <TabNavigator />
         </SafeAreaView>
