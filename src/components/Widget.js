@@ -1,9 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import PropTypes from 'prop-types';
 
 function Widget(props) {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={props.onPress}
+      disabled={!props.onPress}>
       <View style={styles.content}>
         <View style={styles.top}>
           <Text style={styles.header}>{props.header}</Text>
@@ -17,7 +21,7 @@ function Widget(props) {
           </Text>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
@@ -75,5 +79,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
+
+Widget.propTypes = {
+  valueColor: PropTypes.string,
+  rightText: PropTypes.string,
+  header: PropTypes.string,
+  value: PropTypes.string,
+  onPress: PropTypes.func,
+};
 
 export { Widget };
