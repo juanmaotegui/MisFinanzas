@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { Widget } from '../components';
+import { RED, GREEN, YELLOW } from '../colors';
 
 function Dashboard() {
   return (
