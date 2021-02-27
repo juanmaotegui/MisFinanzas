@@ -7,19 +7,16 @@
  */
 import 'react-native-gesture-handler';
 import React from 'react';
+import Setup from './src/setup';
 import { SafeAreaView, StatusBar } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import TabNavigator from './src/navigator';
 
 const App: () => React$Node = () => {
   return (
     <>
-      <NavigationContainer>
-        <StatusBar hidden backgroundColor="#949494" />
-        <SafeAreaView style={{ flex: 1 }}>
-          <TabNavigator />
-        </SafeAreaView>
-      </NavigationContainer>
+      <StatusBar hidden backgroundColor="#949494" />
+      <SafeAreaView style={{ flex: 1 }}>
+        <Setup />
+      </SafeAreaView>
     </>
   );
 };
