@@ -1,11 +1,11 @@
 import React from 'react';
 import { View } from 'react-native';
 import { Widget } from '../components';
-import { RED, GREEN, YELLOW } from '../colors';
+import { RED, GREEN, YELLOW, DARKEST_GREY } from '../colors';
 
 function Dashboard(props) {
   return (
-    <View style={{ backgroundColor: 'rgb(40,36,57)', flex: 1 }}>
+    <View style={{ backgroundColor: DARKEST_GREY, flex: 1 }}>
       <Widget
         valueColor={GREEN}
         header="Ingresos"

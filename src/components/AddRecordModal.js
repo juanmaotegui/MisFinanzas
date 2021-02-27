@@ -8,12 +8,15 @@ import {
   View,
   Text,
   StyleSheet,
-  Button,
+  Dimensions,
   TextInput,
-  TouchableWithoutFeedback,
+  KeyboardAvoidingView,
 } from 'react-native';
 import { addRecord } from '../firebase';
 import BottomSheet from 'reanimated-bottom-sheet';
+import { DARKEST_PURPLE, WHITE, PURPLE } from '../colors';
+
+const height = Dimensions.get('window').height;
 
 const AddRecordModal = forwardRef((props, ref) => {
   const sheetRef = useRef(null);
@@ -52,35 +55,39 @@ const AddRecordModal = forwardRef((props, ref) => {
   };
 
   const renderContent = () => (
-    <View
-      style={{
-        backgroundColor: 'white',
-        padding: 20,
-        height: 230,
-      }}>
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}>Agregar registro</Text>
+    <KeyboardAvoidingView enabled={true}>
+      <View
+        style={{
+          backgroundColor: DARKEST_PURPLE,
+          padding: 20,
+          height: 230,
+        }}>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>Agregar registro</Text>
+        </View>
+        <View style={styles.inputContainer}>
+          <TextInput
+            placeholder="Ingresa el título"
+            style={styles.input}
+            placeholderTextColor={WHITE}
+            maxLength={30}
+            value={title}
+            onChangeText={(text) => setTitle(text)}
+          />
+        </View>
+        <View style={styles.inputContainer}>
+          <TextInput
+            placeholder="Ingresa el monto"
+            keyboardType="number-pad"
+            style={styles.input}
+            placeholderTextColor={WHITE}
+            value={amount}
+            onChangeText={(text) => setAmount(text)}
+            onSubmitEditing={() => newRecord()}
+          />
+        </View>
       </View>
-      <View style={styles.inputContainer}>
-        <TextInput
-          placeholder="Ingresa el título"
-          style={styles.input}
-          maxLength={30}
-          value={title}
-          onChangeText={(text) => setTitle(text)}
-        />
-      </View>
-      <View style={styles.inputContainer}>
-        <TextInput
-          placeholder="Ingresa el monto"
-          keyboardType="number-pad"
-          style={styles.input}
-          value={amount}
-          onChangeText={(text) => setAmount(text)}
-          onSubmitEditing={() => newRecord()}
-        />
-      </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 
   const renderHeader = () => (
@@ -107,7 +114,7 @@ const AddRecordModal = forwardRef((props, ref) => {
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: 'white',
+    backgroundColor: DARKEST_PURPLE,
     shadowColor: '#000000',
     paddingTop: 20,
     borderTopLeftRadius: 20,
@@ -120,13 +127,16 @@ const styles = StyleSheet.create({
     width: 40,
     height: 6,
     borderRadius: 4,
-    backgroundColor: '#00000040',
+    backgroundColor: PURPLE,
     marginBottom: 10,
   },
   inputContainer: {
-    borderBottomColor: '#00000040',
+    borderBottomColor: PURPLE,
     borderBottomWidth: 1,
     marginVertical: 10,
+  },
+  input: {
+    color: WHITE,
   },
   titleContainer: {
     marginBottom: 10,
@@ -134,6 +144,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     textAlign: 'center',
+    color: WHITE,
   },
   buttonContainer: {
     marginTop: 20,
