@@ -18,8 +18,14 @@ function Dashboard(props) {
         header="Gastos"
         rightText="FEBRERO"
         value="- U$ 53.120"
+        onPress={() => props.navigation.navigate('Expenses')}
       />
-      <Widget valueColor={YELLOW} header="Deudas" value="U$ 9.375" />
+      <Widget
+        valueColor={YELLOW}
+        header="Deudas"
+        value="U$ 9.375"
+        onPress={() => props.navigation.navigate('Debts')}
+      />
     </View>
   );
 }

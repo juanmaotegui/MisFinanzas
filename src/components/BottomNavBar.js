@@ -32,7 +32,7 @@ function BottomNavBar({ state, descriptors, navigation }) {
         position="center"
       />
 
-      <TouchableOpacity onPress={() => navigation.navigate('Setting')}>
+      <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
         <MatIcon
           name="settings"
           size={30}
