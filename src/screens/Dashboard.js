@@ -11,7 +11,7 @@ function Dashboard(props) {
         header="INGRESOS"
         rightText="FEBRERO"
         value="U$ 149.560"
-        onPress={() => props.navigation.navigate('INGRESOS')}
+        onPress={() => props.navigation.navigate('Incomes')}
       />
       <Widget
         valueColor={RED}

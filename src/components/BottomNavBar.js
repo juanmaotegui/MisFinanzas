@@ -1,45 +1,59 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import MatIcon from 'react-native-vector-icons/MaterialIcons';
+import { FloatButton } from '../components';
+import { AQUA, DARK_GREY, PURPLE, BLACK, DARKEST_PURPLE } from '../colors';
 
 function BottomNavBar({ state, descriptors, navigation }) {
+  const actions = [
+    {
+      text: 'Gasto',
+      name: 'btn_expense',
+      icon: <MatIcon name="add" size={30} color={BLACK} />,
+      position: 1,
+    },
+  ];
+
   return (
-    <View
-      style={{
-        backgroundColor: 'rgba(255,0,0,1)',
-        height: 60,
-        flexDirection: 'row',
-      }}>
-      {state.routes.map((route, index) => {
-        const label = route.name;
-        const isFocused = state.index === index;
+    <View style={styles.container}>
+      <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
+        <MatIcon
+          name="dashboard"
+          size={30}
+          color={state.index == 0 ? PURPLE : DARK_GREY}
+        />
+      </TouchableOpacity>
 
-        const onPress = () => {
-          const event = navigation.emit({
-            type: 'tabPress',
-            target: route.key,
-            canPreventDefault: true,
-          });
+      <FloatButton
+        actions={actions}
+        singleAction={true}
+        visible={true}
+        color={AQUA}
+        position="center"
+      />
 
-          if (!isFocused && !event.defaultPrevented) {
-            navigation.navigate(route.name);
-          }
-        };
-
-        return (
-          <TouchableOpacity
-            key={label}
-            accessibilityRole="button"
-            accessibilityState={isFocused ? { selected: true } : {}}
-            onPress={onPress}
-            style={{ flex: 1 }}>
-            <Text style={{ color: isFocused ? '#673ab7' : '#222' }}>
-              {label}
-            </Text>
-          </TouchableOpacity>
-        );
-      })}
+      <TouchableOpacity onPress={() => navigation.navigate('Setting')}>
+        <MatIcon
+          name="settings"
+          size={30}
+          color={state.index == 1 ? PURPLE : DARK_GREY}
+        />
+      </TouchableOpacity>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    borderColor: PURPLE,
+    borderTopWidth: 1,
+    backgroundColor: DARKEST_PURPLE,
+    paddingHorizontal: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    height: 50,
+  },
+});
 
 export { BottomNavBar };

@@ -9,12 +9,13 @@ function FloatButton(props) {
 
   return (
     <FloatingAction
-      distanceToEdge={20}
+      distanceToEdge={10}
+      position={props.position}
       visible={props.visible}
       actions={props.actions}
       overrideWithAction={props.singleAction}
       showBackground={false}
-      color="#215bbf"
+      color={props.color}
       onPressItem={(name) => {
         actionOnPress(name);
       }}
