@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import MatIcon from 'react-native-vector-icons/MaterialIcons';
 import { FloatButton } from '../components';
 import { AQUA, DARK_GREY, PURPLE, BLACK, DARKEST_PURPLE } from '../colors';
