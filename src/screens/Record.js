@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { RED, GREEN, YELLOW, DARKEST_GREY, DARK_GREY } from '../colors';
 import { TextInput } from 'react-native-paper';
+import { TypePicker } from '../components';
 
 function Record(props) {
   const [text, setText] = useState(null);
@@ -25,6 +26,7 @@ function Record(props) {
           onChangeText={(t) => setText(t)}
           mode="outlined"
         />
+        <TypePicker onChangeText={(t) => console.log(t)} />
       </View>
     </View>
   );

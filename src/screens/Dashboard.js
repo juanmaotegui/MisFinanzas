@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Alert, View } from 'react-native';
 import { Widget } from '../components';
 import { RED, GREEN, YELLOW, DARKEST_GREY } from '../colors';
 
