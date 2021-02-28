@@ -13,7 +13,8 @@ function BottomNavBar({ state, descriptors, navigation }) {
       name: 'btn_expense',
       icon: <MatIcon name="add" size={30} color={WHITE} />,
       position: 1,
-      onPress: () => childRef.current.open(),
+      // onPress: () => childRef.current.open(),
+      onPress: () => navigation.navigate('Record'),
     },
   ];
 
