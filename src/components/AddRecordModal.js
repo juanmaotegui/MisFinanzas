@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 import { addRecord } from '../firebase';
 import BottomSheet from 'reanimated-bottom-sheet';
-import { DARKEST_PURPLE, WHITE, PURPLE } from '../colors';
+import { DARK_GREY, WHITE, TURQUOISE, PURPLE } from '../colors';
 
 const height = Dimensions.get('window').height;
 
@@ -58,7 +58,7 @@ const AddRecordModal = forwardRef((props, ref) => {
     <KeyboardAvoidingView enabled={true}>
       <View
         style={{
-          backgroundColor: DARKEST_PURPLE,
+          backgroundColor: DARK_GREY,
           padding: 20,
           height: 230,
         }}>
@@ -114,7 +114,7 @@ const AddRecordModal = forwardRef((props, ref) => {
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: DARKEST_PURPLE,
+    backgroundColor: DARK_GREY,
     shadowColor: '#000000',
     paddingTop: 20,
     borderTopLeftRadius: 20,
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   inputContainer: {
-    borderBottomColor: PURPLE,
+    borderBottomColor: TURQUOISE,
     borderBottomWidth: 1,
     marginVertical: 10,
   },

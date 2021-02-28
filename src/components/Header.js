@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
   text: {
     color: '#FFF',
     fontSize: 20,
+    fontFamily: 'Nunito-Bold',
   },
 });
 

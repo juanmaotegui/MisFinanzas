@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 23,
-    fontFamily: 'Nunito-Bold',
+    fontFamily: 'Nunito-Regular',
     color: '#FFF',
     paddingBottom: 5,
     flex: 1,
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: '#cfcfcf',
     paddingBottom: 5,
-    fontFamily: 'Nunito-Bold',
+    fontFamily: 'Nunito-Regular',
   },
   value: {
     fontSize: 35,

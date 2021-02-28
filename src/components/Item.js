@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { GREEN, YELLOW, RED } from '../colors';
+import { GREEN, YELLOW, RED, WHITE, LIGHT_GREY } from '../colors';
 import moment from 'moment';
 
 function Item(props) {
@@ -74,18 +74,19 @@ const styles = StyleSheet.create({
     padding: 10,
     minHeight: 70,
     flexDirection: 'row',
-    borderBottomColor: '#dedede',
+    borderBottomColor: LIGHT_GREY,
     borderBottomWidth: 1,
   },
   itemTitle: {
-    fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: 17,
     marginBottom: 20,
     flex: 1,
+    color: WHITE,
+    fontFamily: 'Nunito-Bold',
   },
   itemAmount: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontFamily: 'Nunito-Bold',
   },
   itemText: {
     flex: 1,
