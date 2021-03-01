@@ -6,3 +6,4 @@ export * from './Item';
 export * from './List';
 export * from './Widget';
 export * from './TypePicker';
+export * from './ScrollPicker';

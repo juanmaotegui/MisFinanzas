@@ -1,17 +1,29 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
-import { RED, GREEN, YELLOW, DARKEST_GREY, DARK_GREY } from '../colors';
+import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import {
+  RED,
+  GREEN,
+  YELLOW,
+  DARKEST_GREY,
+  DARK_GREY,
+  LIGHT_GREY,
+} from '../colors';
 import { TextInput } from 'react-native-paper';
 import { TypePicker } from '../components';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 function Record(props) {
   const [text, setText] = useState(null);
 
   return (
     <View style={styles.container}>
-      <View style={[styles.header, { backgroundColor: DARK_GREY }]}>
-        <Text style={styles.text}>Cerrar</Text>
-        <Text style={styles.text}>Guardar</Text>
+      <View style={[styles.header]}>
+        <TouchableOpacity onPress={() => props.navigation.goBack()}>
+          <Text style={styles.text}>Cerrar</Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.text}>Guardar</Text>
+        </TouchableOpacity>
       </View>
       <View style={styles.content}>
         <TextInput

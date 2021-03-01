@@ -7,8 +7,11 @@ import {
   Text,
   FlatList,
   TouchableOpacity,
+  TouchableWithoutFeedback,
 } from 'react-native';
 import { TextInput } from 'react-native-paper';
+import { DARK_GREY, WHITE } from '../colors';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const TypePicker = (props) => {
   const [text, setText] = useState(null);
@@ -22,8 +25,14 @@ const TypePicker = (props) => {
           setModalVisible(false);
           if (props.onChangeText) props.onChangeText(item);
         }}
-        style={{ marginVertical: 10 }}>
-        <Text>{item}</Text>
+        style={{ marginVertical: 10, flexDirection: 'row' }}>
+        <Icon
+          name="cash-plus"
+          size={25}
+          color={WHITE}
+          style={{ marginRight: 15 }}
+        />
+        <Text style={{ color: WHITE, fontSize: 17 }}>{item}</Text>
       </TouchableOpacity>
     );
   };
@@ -32,33 +41,43 @@ const TypePicker = (props) => {
     <>
       <TouchableOpacity onPress={() => setModalVisible(true)}>
         <TextInput
-          label="Texto"
+          label="Tipo"
           value={text}
           mode="outlined"
           editable={false}
+          right={
+            <TextInput.Icon
+              onPress={() => setModalVisible(true)}
+              name={() => <Icon name="menu-down" size={23} color={WHITE} />}
+            />
+          }
         />
       </TouchableOpacity>
 
       <Modal
-        animationType="slide"
+        animationType="fade"
         transparent={true}
         visible={modalVisible}
-        onRequestClose={() => {
-          Alert.alert('Modal has been closed.');
-          setModalVisible(!modalVisible);
-        }}>
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <View style={{}}>
-              <Text style={{}}>Elige un tipo</Text>
-            </View>
-            <FlatList
-              data={['TIPO1', 'TIPO2', 'TIPO3']}
-              keyExtractor={(item) => item}
-              renderItem={_renderItem}
-            />
+        onRequestClose={() => setModalVisible(false)}>
+        <TouchableWithoutFeedback onPressOut={() => setModalVisible(false)}>
+          <View style={styles.centeredView}>
+            <TouchableWithoutFeedback>
+              <View style={styles.modalView}>
+                <View style={{}}>
+                  <Text
+                    style={{ color: WHITE, fontSize: 19, marginBottom: 15 }}>
+                    Elige un tipo
+                  </Text>
+                </View>
+                <FlatList
+                  data={['Ingreso', 'Gasto', 'Deuda']}
+                  keyExtractor={(item) => item}
+                  renderItem={_renderItem}
+                />
+              </View>
+            </TouchableWithoutFeedback>
           </View>
-        </View>
+        </TouchableWithoutFeedback>
       </Modal>
     </>
   );
@@ -67,11 +86,12 @@ const TypePicker = (props) => {
 const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
-    margin: 20,
     justifyContent: 'center',
+    backgroundColor: 'rgba(0,0,0,.6)',
+    padding: 20,
   },
   modalView: {
-    backgroundColor: 'white',
+    backgroundColor: DARK_GREY,
     borderRadius: 7,
     paddingHorizontal: 20,
     paddingVertical: 15,
@@ -97,7 +117,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#2196F3',
   },
   textStyle: {
-    color: 'white',
+    color: WHITE,
     fontWeight: 'bold',
     textAlign: 'center',
   },
