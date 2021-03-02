@@ -18,13 +18,50 @@ const BottomTab = createBottomTabNavigator();
 const DashboardStack = createStackNavigator();
 const MainStack = createStackNavigator();
 
-const forFade = ({ current }) => ({
-  cardStyle: {
-    opacity: current.progress,
-  },
-});
+const forHorizontalSlide = ({
+  current,
+  next,
+  inverted,
+  layouts: { screen },
+}) => {
+  const progress = Animated.add(
+    current.progress.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0, 1],
+      extrapolate: 'clamp',
+    }),
+    next
+      ? next.progress.interpolate({
+          inputRange: [0, 1],
+          outputRange: [0, 1],
+          extrapolate: 'clamp',
+        })
+      : 0,
+  );
 
-const forSlide = ({ current, next, inverted, layouts: { screen } }) => {
+  return {
+    cardStyle: {
+      transform: [
+        {
+          translateX: Animated.multiply(
+            progress.interpolate({
+              inputRange: [0, 1, 2],
+              outputRange: [
+                screen.width, // Focused, but offscreen in the beginning
+                0, // Fully focused
+                screen.width * -0.3, // Fully unfocused
+              ],
+              extrapolate: 'clamp',
+            }),
+            inverted,
+          ),
+        },
+      ],
+    },
+  };
+};
+
+const forVerticalSlide = ({ current, next, inverted, layouts: { screen } }) => {
   const progress = Animated.add(
     current.progress.interpolate({
       inputRange: [0, 1],
@@ -65,10 +102,26 @@ const forSlide = ({ current, next, inverted, layouts: { screen } }) => {
 function DashboardStackNav() {
   return (
     <DashboardStack.Navigator headerMode="none">
-      <DashboardStack.Screen name="Dashboard" component={Dashboard} />
-      <DashboardStack.Screen name="Incomes" component={Incomes} />
-      <DashboardStack.Screen name="Expenses" component={Expenses} />
-      <DashboardStack.Screen name="Debts" component={Debts} />
+      <DashboardStack.Screen
+        name="Dashboard"
+        component={Dashboard}
+        options={{ cardStyleInterpolator: forHorizontalSlide }}
+      />
+      <DashboardStack.Screen
+        name="Incomes"
+        component={Incomes}
+        options={{ cardStyleInterpolator: forHorizontalSlide }}
+      />
+      <DashboardStack.Screen
+        name="Expenses"
+        component={Expenses}
+        options={{ cardStyleInterpolator: forHorizontalSlide }}
+      />
+      <DashboardStack.Screen
+        name="Debts"
+        component={Debts}
+        options={{ cardStyleInterpolator: forHorizontalSlide }}
+      />
     </DashboardStack.Navigator>
   );
 }
@@ -106,7 +159,7 @@ const Navigator = () => {
         <MainStack.Screen
           name="Record"
           component={Record}
-          options={{ cardStyleInterpolator: forSlide }}
+          options={{ cardStyleInterpolator: forVerticalSlide }}
         />
       </MainStack.Navigator>
     </NavigationContainer>

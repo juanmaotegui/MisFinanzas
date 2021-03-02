@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { View, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import MatIcon from 'react-native-vector-icons/MaterialIcons';
 import { FloatButton, AddRecordModal } from '../components';
 import { GREY, PURPLE, TURQUOISE, WHITE, DARK_GREY } from '../colors';
@@ -18,10 +18,26 @@ function BottomNavBar({ state, descriptors, navigation }) {
     },
   ];
 
+  /**
+   * Si hago click en el boton de dashboard y estoy en algun listado
+   * vuelvo al dashboard
+   */
+  const handleDashboardStack = () => {
+    if (
+      state.index == 0 &&
+      state.routes[0].state.routes &&
+      state.routes[0].state.routes.length > 1
+    ) {
+      navigation.popToTop();
+    } else {
+      navigation.navigate('Dashboard');
+    }
+  };
+
   return (
     <>
       <View style={styles.container}>
-        <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
+        <TouchableOpacity onPress={() => handleDashboardStack()}>
           <MatIcon
             name="dashboard"
             size={30}
