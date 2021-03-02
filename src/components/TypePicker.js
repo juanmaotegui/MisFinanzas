@@ -13,6 +13,12 @@ import { TextInput } from 'react-native-paper';
 import { DARK_GREY, WHITE } from '../colors';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
+const data = [
+  { name: 'Ingreso', icon: 'cash-plus' },
+  { name: 'Gasto', icon: 'cash-minus' },
+  { name: 'Deuda', icon: 'account-cash-outline' },
+];
+
 const TypePicker = (props) => {
   const [text, setText] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
@@ -21,18 +27,18 @@ const TypePicker = (props) => {
     return (
       <TouchableOpacity
         onPress={() => {
-          setText(item);
+          setText(item.name);
           setModalVisible(false);
-          if (props.onChangeText) props.onChangeText(item);
+          if (props.onChangeText) props.onChangeText(item.name);
         }}
         style={{ marginVertical: 10, flexDirection: 'row' }}>
         <Icon
-          name="cash-plus"
+          name={item.icon}
           size={25}
           color={WHITE}
           style={{ marginRight: 15 }}
         />
-        <Text style={{ color: WHITE, fontSize: 17 }}>{item}</Text>
+        <Text style={{ color: WHITE, fontSize: 17 }}>{item.name}</Text>
       </TouchableOpacity>
     );
   };
@@ -70,8 +76,8 @@ const TypePicker = (props) => {
                   </Text>
                 </View>
                 <FlatList
-                  data={['Ingreso', 'Gasto', 'Deuda']}
-                  keyExtractor={(item) => item}
+                  data={data}
+                  keyExtractor={(item) => item.name}
                   renderItem={_renderItem}
                 />
               </View>
